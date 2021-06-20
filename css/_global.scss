@@ -1,0 +1,172 @@
+html {
+    font-size: 100%;
+}
+
+body {
+    line-height: 1.3;
+    font-size: 0.9375rem;
+    background-color: $mainBg;
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    text-align: center;
+    border-radius: 10px;
+    background-color: $cardBg;
+    margin: 5.4375rem 1.4375rem;
+    max-width: 595px;
+
+    @include breakpoint(medium) {
+        margin: 5.4375rem auto;
+    }
+
+    @include breakpoint(large) {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        row-gap: 80px;
+        column-gap: 120px;
+        max-width: 1110px;
+        max-height: 446px;
+        text-align: left;
+    }
+
+    &__image {
+        position: relative;
+        display: block;
+        margin-bottom: 2.5rem;
+
+        @include breakpoint(large) {
+            grid-column: 2;
+            grid-row: 1 / span 2;
+        }
+        
+        img.mobile {
+            max-width: 100%;
+            border-radius: 10px 10px 0 0;
+
+            @include breakpoint(large) {
+                display: none;
+            }
+        }
+
+        img.desktop {
+            display: none;
+
+            @include breakpoint(large) {
+                display: block;
+                border-radius: 0 10px 10px 0;
+            }
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 98%;
+            top: 0;
+            left: 0;
+            border-radius: 10px 10px 0 0;
+            background-color: $accentTrans;
+
+            @include breakpoint(small) {
+                height: 99%;
+            }
+
+            @include breakpoint(large) {
+                height: 110%;
+                border-radius: 0 10px 10px 0;
+            }
+        }
+    }
+
+    &__text {
+        margin: 0 2.1875rem 3rem;
+
+        @include breakpoint(large) {
+            grid-column: 1;
+            grid-row: 1;
+            margin: 4.6875rem 0 0 4.6875rem;
+        }
+
+        > h1 {
+            font-family: $font-main;
+            font-weight: 700;
+            font-size: 1.875rem;
+            line-height: 1.5;
+            color: $headingCol;
+            margin: 0;
+            margin-bottom: 1.3125rem;
+
+            @include breakpoint(large) {
+                font-size: 2.1875rem;
+                line-height: 1.3;
+                margin-bottom: 1.4375rem;
+            }
+
+            .highlight {
+                color: $accent;
+            }
+        }
+
+        > p {
+            font-family: $font-main;
+            font-weight: 400;
+            line-height: 1.95;
+            color: $mainPgCol;
+            margin: 0;
+
+            @include breakpoint(large) {
+                line-height: 1.7;
+            }
+        }
+    }
+
+    &__data {
+        display: flex;
+        flex-direction: column;
+
+        @include breakpoint(small) {
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        @include breakpoint(large) {
+            grid-column: 1;
+            grid-row: 2;
+            justify-content: left;
+            margin: 0 0 0 4.6875rem;
+        }
+        
+        &--item {
+            margin-bottom: 2.1875rem;
+            
+            @include breakpoint(small) {
+                &:not(:last-child) {
+                    margin-right: 2.5rem; // 40px
+
+                    @include breakpoint(large) {
+                        margin-right: 3.75rem; // 60px
+                    }
+                }
+            }
+        }
+
+        .heading {
+            font-family: $font-data;
+            font-weight: 700;
+            font-size: 1.5625rem;
+            color: $headingCol;
+            margin-bottom: 0.4375rem;
+        }
+
+        .par {
+            font-family: $font-data;
+            font-weight: 400;
+            font-size: 0.8125rem;
+            color: $statCol;
+            text-transform: uppercase;
+        }
+    }
+}
