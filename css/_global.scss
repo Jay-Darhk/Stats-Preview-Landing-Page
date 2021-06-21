@@ -68,7 +68,7 @@ body {
             top: 0;
             left: 0;
             border-radius: 10px 10px 0 0;
-            background-color: $accentTrans;
+            background-color: $overlay;
 
             @include breakpoint(small) {
                 height: 99%;
